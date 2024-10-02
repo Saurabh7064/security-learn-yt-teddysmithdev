@@ -1,6 +1,5 @@
 package com.rhinocode.addtocart.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -16,11 +15,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private CustomUserDetailsService userDetailsService;
-    @Autowired
-    public SecurityConfig(CustomUserDetailsService userDetailsServic) {
-        this.userDetailsService = userDetailsService;
-    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -34,22 +28,7 @@ public class SecurityConfig {
 
         return http.build();
     }
-//
-//    @Bean
-//    public UserDetailsService users() {
-//        UserDetails admin = User.builder()
-//                .username("admin")
-//                .password("{noop}password")
-//                .roles("ADMIN")//role can any string i think
-//                .build();
-//        UserDetails user = User.builder()
-//                .username("user")
-//                .password("{noop}password")
-//                .roles("USER")
-//                .build();
-//
-//        return new InMemoryUserDetailsManager(admin, user);
-//    }
+
 
     @Bean
     public AuthenticationManager authenticationManager(
